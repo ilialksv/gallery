@@ -27,3 +27,28 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+## TODO
+
+- [x] Make it deploy (vercel)
+- [x] Scaffold basic ui with mock data
+- [x] Tidy up build process
+- [ ] Actually set up a database (vercel postgres)
+- [ ] Attach database to UI
+- [ ] Add authentication (w/ clerk)
+- [ ] Add image upload
+- [ ] "taint" (server-only)
+- [ ] Use Next/Image component
+- [ ] Error management (w/ Sentry)
+- [ ] Routing/image page (parallel route)
+- [ ] Update upload button to be less cringe
+- [ ] Analytics (posthog)
+- [ ] Delete button (w/ Server Actions)
+- [ ] Ratelimiting (upstash)
+
+## A challenge to the viewer
+
+- Fix the page layout for images of different resolutions
+- "Selecting" images on the gallery page
+- "infinite scroll"
+- Folders/albums

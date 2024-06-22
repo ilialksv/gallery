@@ -14,8 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${GeistSans.variable} bg-black text-white`}>
+      <body className="p-4 flex flex-col gap-4">
+        <header className="flex justify-between gap-4">
+          <h1>Gallery</h1>
+          <p>Sign in</p>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
