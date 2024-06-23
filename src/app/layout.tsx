@@ -1,6 +1,10 @@
-import "@/styles/globals.css";
-
+import { ClerkProvider } from "@clerk/nextjs";
+import type { PropsWithChildren } from "react";
 import { GeistSans } from "geist/font/sans";
+
+import TopNav from "./_components/TopNav";
+
+import "@/styles/globals.css";
 
 export const metadata = {
   title: "Create T3 App",
@@ -8,20 +12,17 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout(props: PropsWithChildren) {
+  const { children } = props;
+
   return (
-    <html lang="en" className={`${GeistSans.variable} bg-black text-white`}>
-      <body className="p-4 flex flex-col gap-4">
-        <header className="flex justify-between gap-4">
-          <h1>Gallery</h1>
-          <p>Sign in</p>
-        </header>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable} bg-black text-white`}>
+        <body className="p-4 flex flex-col gap-4">
+          <TopNav />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
