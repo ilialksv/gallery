@@ -1,11 +1,9 @@
-import { db } from "@/server/db";
+import { getMyImages } from "@/server/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function Images() {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id)
-  });
+  const images = await getMyImages();
 
   return (
     <div className="grid grid-cols-4 gap-4">
