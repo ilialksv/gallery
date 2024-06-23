@@ -1,21 +1,17 @@
-import { db } from "@/server/db";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Images from "./_components/Images";
 
-export const dynamic = "force-dynamic";
-
-export default async function Page() {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id)
-  });
-
+export default function Page() {
   return (
-    <main className="grid grid-cols-4 gap-4">
-      {images.map((image) => (
-        <div key={image.id}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image.url} alt={image.name} />
-          <p>{image.name}</p>
+    <main className="flex flex-col gap-4">
+      <SignedOut>
+        <div className="w-full flex justify-center">
+          Please sign in to view images
         </div>
-      ))}
+      </SignedOut>
+      <SignedIn>
+        <Images />
+      </SignedIn>
     </main>
   );
 }
