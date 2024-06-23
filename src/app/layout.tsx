@@ -1,5 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import type { PropsWithChildren } from "react";
+import type { ReactNode } from "react";
 import { GeistSans } from "geist/font/sans";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
@@ -16,8 +16,13 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout(props: PropsWithChildren) {
-  const { children } = props;
+type RootLayoutProps = {
+  children: ReactNode;
+  modal: ReactNode;
+};
+
+export default function RootLayout(props: RootLayoutProps) {
+  const { children, modal } = props;
 
   return (
     <ClerkProvider>
@@ -34,6 +39,8 @@ export default function RootLayout(props: PropsWithChildren) {
         <body className="p-4 flex flex-col gap-4">
           <TopNav />
           {children}
+          {modal}
+          <div id="modal-root" />
         </body>
       </html>
     </ClerkProvider>

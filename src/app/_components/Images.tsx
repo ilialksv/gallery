@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { getMyImages } from "@/server/queries";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +11,7 @@ export default async function Images() {
   return (
     <div className="grid grid-cols-4 gap-4">
       {images.map((image) => (
-        <div key={image.id} className="relative w-full">
+        <Link key={image.id} href={`/image/${image.id}`}>
           <Image
             src={image.url}
             width={480}
@@ -19,7 +20,7 @@ export default async function Images() {
             className="w-full h-auto object-contain"
           />
           <p>{image.name}</p>
-        </div>
+        </Link>
       ))}
     </div>
   );
